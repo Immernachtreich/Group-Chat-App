@@ -2,56 +2,67 @@
 const URL = 'http://localhost:5000';
 
 // Signup Inputs
-const usernameInput = document.getElementById('username-input');
-const emailInput = document.getElementById('email-input');
-const phoneNumberInput = document.getElementById('phone-input');
+const emailInput = document.getElementById('email-input')
 const passwordInput = document.getElementById('password-input');
 
 /*
 * Event Listeners 
 */
-const signUpButton = document.getElementById('signup-button');
-signUpButton.addEventListener('click', signupUser);
+const loginButton = document.getElementById('login-button');
+loginButton.addEventListener('click', loginUser);
 
 /*
 * Event Listeners Functions
 */
-async function signupUser(e) {
+async function loginUser(e) {
+
     e.preventDefault();
 
-    if(usernameInput.value.trim() === '' || 
-        emailInput.value.trim() === '' ||
-        phoneNumberInput.value.trim() === '' ||
-        passwordInput.value.trim() === '' ) {
+    if(emailInput.value.trim() === '' || passwordInput.value.trim() === '' ) {
 
         popupNotification('Caution', 'Please Enter all the fields');
-        
+
     } else {
 
         try {
 
             const userDetails = {
-                username: usernameInput.value,
                 email: emailInput.value,
-                phoneNumber: phoneNumberInput.value,
                 password: passwordInput.value
             }
-    
-            const response = await axios.post(URL + '/user/signup', userDetails);
 
-            location.href('../views/login.html');
-    
+            const response = await axios.post(URL + '/user/login', userDetails);
+
+            localStorage.setItem('token', response.data.token);
+
+            popupNotification('Success', 'Sucessfully logged in');
+
         } catch(err) {
 
             console.log(err);
     
-            if(err.response.status === 409) {
+            if(err.response.status === 401) {
+
+                popupNotification('Error', err.response.data.message);
+
+            } else if(err.response.status === 404) {
+
                 popupNotification('Error', err.response.data.message);
             }
         }
     }
 }
 
+/*
+* Other Functions 
+*/
+
+function clearFields() {
+    usernameInput.value = '';
+    emailInput.value = '';
+    phoneNumberInput.value = '';
+    passwordInput.value = '';
+}
 
 /*
 * Popup Notification 

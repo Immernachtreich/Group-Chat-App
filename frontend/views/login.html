@@ -6,35 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="../public/main.css">
-    <link rel="stylesheet" href="../public/signup.css">
+    <link rel="stylesheet" href="../public/login.css">
     <link rel="stylesheet" href="../public/popupNotification.css">
 
-    <title> Sign Up</title>
+    <title> Login </title>
 
 </head>
 <body>
     <div class="main-div">
 
-        <h1 id="main-div-h1" class="main-div-h1"> Sign Up </h1>
+        <h1 id="main-div-h1" class="main-div-h1"> Login </h1>
 
         <div class="inner-div">
 
-            <form action="" id="signup-form" class="signup-form">
-
-                <label for="username" class="userDetails-label"> Name </label>
-                <input type="text" name="username" id="username-input" class="userDetails-input">
+            <form action="" id="signup-form" class="login-form">
                 
                 <label for="email" class="userDetails-label"> Email </label>
                 <input type="email" name="email" id="email-input" class="userDetails-input">
 
-                <label for="phoneNumber" class="userDetails-label"> Phone Number </label>
-                <input type="number" name="phoneNumber" id="phone-input" class="userDetails-input">
-
                 <label for="password" class="userDetails-label"> Password </label>
                 <input type="password" name="password" id="password-input" class="userDetails-input">
                 
-                <a href="login.html" class="login-link"> Already Have a Account? Click here to Login </a>
-                <button type="submit" id="signup-button" class="submit-button"> Sign Up </button>
+                <a href="signup.html" class="signup-link"> New User? Click Here to Signup </a>
+                <button type="submit" id="login-button" class="submit-button">Login</button>
             </form>
 
             <div class="popup-container" id="popup-container">
@@ -48,7 +42,7 @@
     </div>
 </body>
 
-<script src="../scripts/signup.js"></script>
+<script src="../scripts/login.js"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
 </html>

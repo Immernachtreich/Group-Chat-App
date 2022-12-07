@@ -6,7 +6,7 @@
     color: whitesmoke
 }
 
-.signup-form {
+.login-form {
     margin: 1rem;
     text-align: center;
 }
@@ -58,12 +58,12 @@
     background-color: rgb(12, 159, 196);
 }
 
-.login-link {
+.signup-link {
     display: block;
     color: whitesmoke;
     margin-top: 1rem;
 }
 
-.login-link:hover {
-    color: rgb(12, 142, 142);;
+.signup-link:hover {
+    color: rgb(12, 159, 196)
 }
