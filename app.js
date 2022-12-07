@@ -17,7 +17,7 @@ const userRoutes = require('./routes/user.js');
 const app = express();
 
 // Initializing Middleware
-app.use(cors()); 
+app.use(cors({ origin: '*' })); 
 app.use(bodyParser.json({ extended: false }));
 
 // Routes
