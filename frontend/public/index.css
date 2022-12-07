@@ -1,0 +1,61 @@
+.messages-div {
+    margin: 1rem;
+    text-align: center;
+    padding: 0.1rem 0rem;
+}
+.messages-div h1{
+    font-family: inherit;
+    color: whitesmoke;
+}
+
+.messages-div ul {
+    border: 2px solid whitesmoke;
+    list-style: none;
+    padding: 0;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 5rem;
+}
+
+.messages-div ul li {
+    width: 90%;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+    text-align: left;
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+
+.messages-div ul li:nth-child(even) {
+    background-color: rgb(60, 33, 106);
+}
+
+.msg-input-div {
+    position: fixed;
+    background-color: rgb(25, 70, 108);
+
+    padding: 1rem;
+    bottom: 0; 
+
+    width: 100%;
+}
+
+.message-input {
+    margin-left: 20%;
+    width: 50%;
+    height: 1.5rem;
+}
+
+.send-msg-btn {
+    width: 5rem;
+    height: 2rem;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+}
+
+.send-msg-btn:hover {
+    background-color: rgb(12, 159, 196);
+}
