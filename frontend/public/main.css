@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Metrophobic', sans-serif;
+
+    background-color: rgb(16, 16, 16);
+    /* background-image: url('https://t3.ftcdn.net/jpg/03/12/40/90/360_F_312409000_eMqNEV0nWOAQT4fT2OWDXpO0r1IJz32U.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+
+    height: 100%;
+
+    transition: background 0.3s linear,
+    color 0.3s linear;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.main-div {
+    width: 100%;
+    padding: 2rem 0;
+    margin: auto;
+}
+
+.inner-div {
+    margin: auto;
+    width: 30%;
+    border: 3px solid whitesmoke;
+    padding: 10px;
+}
+
