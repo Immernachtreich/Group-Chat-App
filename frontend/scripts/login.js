@@ -35,7 +35,7 @@ async function loginUser(e) {
 
             localStorage.setItem('token', response.data.token);
 
-            popupNotification('Success', 'Sucessfully logged in');
+            location.href = '../views/index.html';
 
         } catch(err) {
 

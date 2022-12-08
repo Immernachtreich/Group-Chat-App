@@ -9,7 +9,11 @@ const messageInput = document.getElementById('message-input');
 const sendMsgBtn = document.getElementById('send-msg-btn');
 sendMsgBtn.addEventListener('click', sendMessage);
 
+window.addEventListener('DOMContentLoaded', getMessages);
 
+/*
+* Event Functions 
+*/
 async function sendMessage() {
 
     if(!(messageInput.value.trim() === '')) {
@@ -23,8 +27,10 @@ async function sendMessage() {
             );
 
             console.log(response);
+            
+            const textString = response.data.username + ': ' + response.data.response.message;
 
-            createMessage(response.data.response.message);
+            createMessage(textString);
 
             clearFields();
 
@@ -35,6 +41,24 @@ async function sendMessage() {
             }
         }
         
+    }
+}
+
+async function getMessages() {
+
+    try {
+
+        const response = await axios.get(URL + '/message/getMessages');
+
+        console.log(response);
+        
+        response.data.messages.forEach((message) => {
+
+            const textString = message.user.username + ': ' + message.message;
+            createMessage(textString);
+        })
+    } catch (err) {
+        console.log(err);
     }
 }
 

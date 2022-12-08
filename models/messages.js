@@ -2,6 +2,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
+const Users = require('../models/users.js');
+
 // Creating Messages Table
 const Messages = sequelize.define('messages',{
     id: {

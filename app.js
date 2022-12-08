@@ -39,7 +39,7 @@ app.use((req, res) => {
 */
 
 // One To Many Users 1<---->M Messages
-Messages.belongsTo(Users, { constraints: true, onDelete: 'CASCADE' });
+Messages.belongsTo(Users, { constraints: true, onDelete: 'CASCADE'});
 Users.hasMany(Messages);
 
 // Initializing database and listening to port

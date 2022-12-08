@@ -39,7 +39,7 @@ async function signupUser(e) {
     
             const response = await axios.post(URL + '/user/signup', userDetails);
 
-            location.href('../views/login.html');
+            location.href = '../views/login.html';
     
         } catch(err) {
 
