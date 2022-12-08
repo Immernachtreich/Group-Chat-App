@@ -7,30 +7,31 @@
 
     <link rel="stylesheet" href="../public/main.css">
     <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/popupNotification.css">
 
     <title>Chatroom</title>
 </head>
 <body>
     <div class="messages-div">
         <h1>Chat App</h1>
-        <ul>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
-            <li> Hello </li>
+        <ul id="messages-ul">
         </ul>
     </div>
+
     <div class="msg-input-div">
         <input type="text" name="message" id="message-input" class="message-input">
         <button id="send-msg-btn" class="send-msg-btn">Send</button>
     </div>
+
+    <div class="popup-container" id="popup-container">
+        <div class="popup" id="popup-inner-div">
+            <button id="close">&times;</button>
+        </div>
+    </div>
+
 </body>
+
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+<script src="../scripts/index.js"></script>
+
 </html>
