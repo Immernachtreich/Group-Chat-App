@@ -5,16 +5,23 @@ const URL = 'http://localhost:5000';
 const token = localStorage.getItem('token');
 if(!token) {location.href = '../views/login.html';}
 
+const ul = document.getElementById('messages-ul');
 const messageInput = document.getElementById('message-input');
+
 const sendMsgBtn = document.getElementById('send-msg-btn');
 sendMsgBtn.addEventListener('click', sendMessage);
 
-window.addEventListener('DOMContentLoaded', getMessages);
+window.addEventListener('DOMContentLoaded', () => {
+    getMessages();
+    setInterval(getMessages, 5000);
+});
 
 /*
 * Event Functions 
 */
-async function sendMessage() {
+async function sendMessage(e) {
+
+    e.preventDefault();
 
     if(!(messageInput.value.trim() === '')) {
 
@@ -48,6 +55,8 @@ async function getMessages() {
 
     try {
 
+        ul.innerHTML = '';
+
         const response = await axios.get(URL + '/message/getMessages');
 
         console.log(response);
@@ -56,7 +65,8 @@ async function getMessages() {
 
             const textString = message.user.username + ': ' + message.message;
             createMessage(textString);
-        })
+        });
+
     } catch (err) {
         console.log(err);
     }
@@ -68,7 +78,6 @@ async function getMessages() {
 */
 
 function createMessage(message) {
-    const ul = document.getElementById('messages-ul');
 
     ul.innerHTML += `<li>${message}</li>`;
 }
