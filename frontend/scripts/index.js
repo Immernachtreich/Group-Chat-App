@@ -13,7 +13,7 @@ sendMsgBtn.addEventListener('click', sendMessage);
 
 window.addEventListener('DOMContentLoaded', () => {
     getMessages();
-    setInterval(getMessages, 5000);
+    setInterval(getMessagesInterval, 2000);
 });
 
 /*
@@ -27,17 +27,13 @@ async function sendMessage(e) {
 
         try {
 
-            const response = await axios.post(
+            await axios.post(
                 URL + '/message/sendMessage',
                 { message: messageInput.value },
                 { headers: { 'Authorization': token } }
             );
 
-            console.log(response);
-            
-            const textString = response.data.username + ': ' + response.data.response.message;
-
-            createMessage(textString);
+            getMessagesInterval();
 
             clearFields();
 
@@ -52,22 +48,63 @@ async function sendMessage(e) {
 }
 
 async function getMessages() {
+    
+    ul.innerHTML = '';
+    
+    const oldMessages = JSON.parse(localStorage.getItem('messages'));
+    
+    if(!oldMessages) {
+        
+        try {
+
+            const response = await axios.get(URL + '/message/getMessages');
+            
+            const messages = JSON.stringify(response.data.messages);
+            const finalArray = messages.slice(messages.length - 10, messages.length);
+
+            localStorage.setItem('messages', );
+    
+            response.data.messages.forEach((message) => {
+    
+                const textString = message.user.username + ': ' + message.message;
+                createMessage(textString);
+            });
+    
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+
+        oldMessages.forEach((oldMessage) => {
+            const textString = oldMessage.user.username + ': ' + oldMessage.message;
+            createMessage(textString);
+        });
+    }
+}
+
+async function getMessagesInterval() {
 
     try {
 
-        ul.innerHTML = '';
+        const oldMessages = JSON.parse(localStorage.getItem('messages'));
 
-        const response = await axios.get(URL + '/message/getMessages');
-
-        console.log(response);
+        const lastMessageId = oldMessages[oldMessages.length - 1].id;
         
-        response.data.messages.forEach((message) => {
+        const response = await axios.get(URL + '/message/getMessages/?lastMessageId=' + lastMessageId);
 
-            const textString = message.user.username + ': ' + message.message;
-            createMessage(textString);
-        });
+        if(response.data.messages.length > 0) {
 
-    } catch (err) {
+            const concatedArray = oldMessages.concat(response.data.messages);
+
+            const finalArray = concatedArray.slice(concatedArray.length - 10, concatedArray.length);
+
+            localStorage.setItem('messages', JSON.stringify(finalArray));
+
+            getMessages();
+        } 
+        
+
+    } catch(err) {
         console.log(err);
     }
 }
