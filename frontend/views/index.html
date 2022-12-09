@@ -6,14 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../public/main.css">
-    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/chat.css">
     <link rel="stylesheet" href="../public/popupNotification.css">
+    <link rel="stylesheet" href="../public/groups.css">
+    <link rel="stylesheet" href="../public/header.css">
 
     <title>Chatroom</title>
 </head>
 <body>
+    <header class="main-header">
+        <button class="logout-btn" id="logout-btn" onclick="logout()"> Logout </button>
+        <button class="new-group-btn" id="new-group-btn" onclick="createNewGroup()"> Create New Group </button>
+    </header>
+
+    <div class="groups-div">
+        <h2>Groups</h2>
+        <ul>
+            <li>Group1</li>
+            <li>Group1</li>
+            <li>Group1</li>
+            <li>Group1</li>
+        </ul>
+    </div>
+
     <div class="messages-div">
-        <h1>Chat App</h1>
+        <h2>Chat App</h2>
         <ul id="messages-ul">
         </ul>
     </div>

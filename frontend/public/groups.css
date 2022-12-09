@@ -1,0 +1,43 @@
+.groups-div {
+    display: inline-table;
+    text-align: center;
+    
+    margin-bottom: 2rem;
+    width: 43%;
+    margin-right: auto;
+
+    border: 5px solid whitesmoke;
+
+    overflow: auto;
+}
+.groups-div h2{
+    font-family: inherit;
+    color: whitesmoke;
+}
+
+.groups-div ul {
+    border: 2px solid whitesmoke;
+    list-style: none;
+    padding: 0;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5rem;
+}
+
+.groups-div ul li {
+    width: 90%;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+    text-align: left;
+    margin: 1rem auto;
+    padding: 1rem 1rem;
+    word-wrap: break-word;
+}
+
+.groups-div ul li:nth-child(even) {
+    background-color: rgb(60, 33, 106);
+}
+
+.groups-div ul li:hover {
+    background-color: rgb(106, 166, 215);
+}

@@ -1,9 +1,14 @@
 .messages-div {
-    margin: 1rem;
     text-align: center;
-    padding: 0.1rem 0rem;
+    display: inline-table;
+    margin-bottom: 2rem;
+    width: 50%;
+    margin-left: 1rem;
+    border: 4px solid whitesmoke;
+
+    overflow: auto;
 }
-.messages-div h1{
+.messages-div h2{
     font-family: inherit;
     color: whitesmoke;
 }
@@ -12,7 +17,7 @@
     border: 2px solid whitesmoke;
     list-style: none;
     padding: 0;
-    width: 60%;
+    width: 80%;
     margin: auto;
     margin-bottom: 5rem;
 }
@@ -23,7 +28,7 @@
     color: whitesmoke;
     text-align: left;
     margin: 1rem auto;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     word-wrap: break-word;
 }
 
@@ -35,10 +40,13 @@
     position: fixed;
     background-color: rgb(25, 70, 108);
 
-    padding: 1rem;
-    bottom: 0; 
+    padding: 1rem 6px;
 
-    width: 100%;
+    bottom: 0;
+    right: 0; 
+    width: 54%;
+    
+    border: 2px solid whitesmoke;
 }
 
 .message-input {
@@ -60,3 +68,4 @@
 .send-msg-btn:hover {
     background-color: rgb(12, 159, 196);
 }
+

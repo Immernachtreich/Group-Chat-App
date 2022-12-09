@@ -13,6 +13,8 @@ const sequelize = require('./util/database.js');
 // Model Imports
 const Users = require('./models/users.js');
 const Messages = require('./models/messages.js');
+const Groups = require('./models/group.js');
+const UserGroups = require('./models/userGroups.js');
 
 // Routes Import
 const userRoutes = require('./routes/user.js');
@@ -34,13 +36,22 @@ app.use((req, res) => {
     res.status(404).send(`<h1> Page Not Found </h1>`);
 });
 
+
 /* 
 * Defining Relationships
 */
 
 // One To Many Users 1<---->M Messages
-Messages.belongsTo(Users, { constraints: true, onDelete: 'CASCADE'});
+Messages.belongsTo(Users, { constraints: true, onDelete: 'CASCADE' });
 Users.hasMany(Messages);
+
+// One To Many Groups 1<---->M Messages
+Messages.belongsTo(Groups, { constraints: true, onDelete: 'CASCADE' });
+Groups.hasMany(Messages);
+
+//Many To Many Users M<---->M Groups
+Users.belongsToMany(Groups, { through: UserGroups });
+Groups.belongsToMany(Users, { through: UserGroups });
 
 // Initializing database and listening to port
 sequelize.sync()

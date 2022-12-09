@@ -1,0 +1,36 @@
+.main-header {
+    background-color: rgb(25, 70, 108);
+    padding: 2rem 0rem;
+
+    margin-bottom: 1rem;
+}
+
+.logout-btn {
+    width: 5rem;
+    height: 2rem;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+
+    margin: 0rem 1rem;
+}
+
+.new-group-btn {
+
+    width: 8rem;
+    height: 2rem;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+
+    margin: 0rem 1rem;
+}
+
+.logout-btn:hover,
+.new-group-btn:hover {
+    background-color: rgb(12, 159, 196);
+}
