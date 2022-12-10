@@ -27,7 +27,7 @@
     margin: auto;
 }
 
-.popup button {
+#close {
     background-color: rgb(30, 30, 30);
     color: whitesmoke;
     font-size: 1.5rem;

@@ -16,21 +16,24 @@
 <body>
     <header class="main-header">
         <button class="logout-btn" id="logout-btn" onclick="logout()"> Logout </button>
-        <button class="new-group-btn" id="new-group-btn" onclick="createNewGroup()"> Create New Group </button>
+        <button class="new-group-btn" id="new-group-btn"> Create New Group </button>
+        <button class="new-group-btn" id="existing-group-btn"> Join Group </button>
     </header>
 
     <div class="groups-div">
         <h2>Groups</h2>
-        <ul>
-            <li>Group1</li>
-            <li>Group1</li>
-            <li>Group1</li>
-            <li>Group1</li>
+        <ul id="groups-ul">
+            <!-- <li onclick="">
+                <div class="group-text-div"> Group 1 </div> 
+                <div class="invite-button-div">
+                    <button class="invite-button" id="invite-button" onclick="popupNotification()">+</button>
+                </div>
+            </li> -->
         </ul>
     </div>
 
     <div class="messages-div">
-        <h2>Chat App</h2>
+        <h2 id="group-title">Chat App</h2>
         <ul id="messages-ul">
         </ul>
     </div>

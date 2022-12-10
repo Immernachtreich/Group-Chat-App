@@ -41,3 +41,72 @@
 .groups-div ul li:hover {
     background-color: rgb(106, 166, 215);
 }
+
+.create-grp-form {
+    text-align: center;
+}
+
+.create-grp-form label {
+    display: block;
+    margin: 1rem 0rem;
+}
+
+.create-grp-form input {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2rem;
+    height: 2rem;
+    font-size: 25px;
+
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+    border: 3px solid whitesmoke;
+}
+
+.create-grp-form button {
+    display: block;
+    width: 5rem;
+    margin: auto;
+
+    margin-bottom: 0.5rem;
+
+    border: none;
+    border-radius: 7px;
+    width: 8rem;
+    height: 2rem;
+
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.create-grp-form button:hover {
+    border: 2px solid whitesmoke;
+    background-color: rgb(12, 159, 196);
+}
+
+.group-text-div {
+    display: inline-block;
+    width: 80%;
+}
+
+.invite-button-div {
+    position: relative;
+    display: inline-block;
+
+    margin-left: 4rem;
+}
+
+.invite-button {
+    background-color: rgba(106, 166, 215, 0);
+    color: whitesmoke;
+    border: none;
+    font-size: 20px;
+}
+
+.invite-button:hover {
+    background-color: rgb(106, 166, 215);
+}

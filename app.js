@@ -18,7 +18,8 @@ const UserGroups = require('./models/userGroups.js');
 
 // Routes Import
 const userRoutes = require('./routes/user.js');
-const MessageRoutes = require('./routes/message.js');
+const messageRoutes = require('./routes/message.js');
+const groupRoutes = require('./routes/group.js');
 
 // Initializing the backend
 const app = express();
@@ -29,7 +30,8 @@ app.use(bodyParser.json({ extended: false }));
 
 // Routes
 app.use('/user', userRoutes);
-app.use('/message', MessageRoutes);
+app.use('/message', messageRoutes);
+app.use('/group', groupRoutes);
 
 // Error Routes
 app.use((req, res) => {
@@ -49,7 +51,7 @@ Users.hasMany(Messages);
 Messages.belongsTo(Groups, { constraints: true, onDelete: 'CASCADE' });
 Groups.hasMany(Messages);
 
-//Many To Many Users M<---->M Groups
+// Many To Many Users M<---->M Groups
 Users.belongsToMany(Groups, { through: UserGroups });
 Groups.belongsToMany(Users, { through: UserGroups });
 

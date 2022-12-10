@@ -4,9 +4,9 @@
     margin-bottom: 2rem;
     width: 50%;
     margin-left: 1rem;
-    border: 4px solid whitesmoke;
+    border: 4px solid whitesmoke;   
 
-    overflow: auto;
+    padding-bottom: 1rem;
 }
 .messages-div h2{
     font-family: inherit;
@@ -19,7 +19,16 @@
     padding: 0;
     width: 80%;
     margin: auto;
-    margin-bottom: 5rem;
+    
+    height: 29rem;
+    overflow: scroll;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.messages-div ul::-webkit-scrollbar {
+    display: none;
 }
 
 .messages-div ul li {

@@ -14,6 +14,12 @@ const Groups = sequelize.define('groups',{
     name: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+
+    groupUrl: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     }
     
 })
