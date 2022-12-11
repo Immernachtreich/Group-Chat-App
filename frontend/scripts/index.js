@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 0);
 
     getGroups();
-    
+
     setInterval(getMessagesInterval, 2000);
 });
 
@@ -86,12 +86,12 @@ async function sendMessage(e) {
     }
 }
 
+
 async function getMessages(groupId, groupName) {
 
+    ul.innerHTML = '';
     const groupTitle = document.getElementById('group-title');
     groupTitle.innerHTML = groupName;
-    
-    ul.innerHTML = '';
 
     activeGroup = {
         groupId: groupId,
@@ -205,7 +205,7 @@ async function getGroups() {
 
         response.data.groupDetails.forEach((group) => {
             createGroup(group);
-        })
+        });
         
     } catch(err) {
         console.log(err);
@@ -241,6 +241,82 @@ async function joinGroup(e) {
     }
 }
 
+async function groupSettings() {
+
+    
+    const response = await axios.get(
+        URL + '/group/getGroupMembers/?groupId=' + activeGroup.groupId,
+        { headers: { 'Authorization': token } }
+    );
+    
+    let userList = `<ul class="grp-settings-ul">`;
+    
+    const isCurrentUserAdmin = response.data.currentUserGroup.isAdmin;
+    
+
+    for(let i = 0; i < response.data.users.length; i++) {
+
+        const user = response.data.users[i];
+        const isAdmin = response.data.userGroups[i].isAdmin;
+
+        console.log(response.data.users, response.data.userGroups);
+
+        let adminBtn = ``;
+        let deleteBtn = ``;
+
+        if(isCurrentUserAdmin && !isAdmin) {
+
+            adminBtn = `<button class="admin-btn" onclick="makeAdmin(event, ${user.id}, ${activeGroup.groupId})"> Make Admin </button>`;
+            deleteBtn = `<button class="remove-btn" onclick="removeUserFromGroup(event, ${user.id}, ${activeGroup.groupId})"> Remove </button>`
+        }
+
+        let userListLi = `<li>${user.username}</li>`;
+
+        userListLi += deleteBtn;
+        userListLi += adminBtn;
+
+        userList += userListLi;
+    }
+
+    userList += `</ul>`;
+    
+    popupNotification('Group Details', userList);
+}
+
+async function makeAdmin(e, userId, groupId) {
+    try {
+
+        const response = await axios.put(
+            URL + '/group/makeAdmin',
+            { userId: userId, groupId: groupId }
+        );
+
+        e.target.previousElementSibling.remove();
+        e.target.remove();
+        
+    } catch (err) {
+        console.log(err);
+    }
+} 
+
+async function removeUserFromGroup(e, userId, groupId) {
+    try {
+
+        const response = await axios.post(
+            URL + '/group/removeUserFromGroup',
+            { userId: userId, groupId: groupId }
+        );
+
+        console.log(e.target.previousElementSibling);
+        e.target.previousElementSibling.remove();
+        e.target.nextElementSibling.remove();
+        
+        e.target.remove();
+
+    } catch (err) {
+        console.log(err);
+    }
+}
 /*
 * DOM Functions
 */
@@ -256,6 +332,7 @@ function createGroup(groupDetails) {
     `<li onclick="getMessages('${groupDetails.id}', '${groupDetails.name}')">
         <div class="group-text-div"> ${groupDetails.name} </div> 
         <div class="invite-button-div">
+            <button class="grp-setting-btn" onclick="setActiveGroup('${groupDetails.id}', '${groupDetails.name}');groupSettings()">?</button>
             <button class="invite-button" id="invite-button" onclick="popupNotification('Invite Users','${groupDetails.groupUrl}')">+</button>
         </div>
     </li>`
@@ -269,6 +346,14 @@ function logout() {
     localStorage.removeItem('token');
     location.href = '../views/login.html';
 }
+
+function setActiveGroup(groupId, groupName) {
+    activeGroup = {
+        groupId: groupId,
+        groupName: groupName
+    };
+}
+
 /*
 * Popup Notification 
 */
@@ -303,10 +388,6 @@ function popupNotification(title, htmlElement, text) {
     } else {
         innerMessage.append(document.createTextNode(text));
     }
-
-
-    // <h1>Success</h1>
-    // <p>${message}</p>
 
     popupInnerDiv.appendChild(headingH1);
     popupInnerDiv.appendChild(innerMessage);

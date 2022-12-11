@@ -4,6 +4,9 @@ const { v4: uuidv4 } = require('uuid');
 // Importing Models
 const Groups = require('../models/group.js');
 const UserGroups = require('../models/userGroups.js');
+const Users = require('../models/users.js');
+
+const {Op} = require('sequelize');
 
 exports.createGroup = async (req, res, next) => {
 
@@ -18,7 +21,8 @@ exports.createGroup = async (req, res, next) => {
 
     await UserGroups.create({
         userId: userId,
-        groupId: response.dataValues.id
+        groupId: response.dataValues.id,
+        isAdmin: true
     })
 
     res.json({success: true, user: req.user, group: response.dataValues});
@@ -67,7 +71,8 @@ exports.joinGroup = async (req, res, next) => {
 
         await UserGroups.create({ 
             groupId: group.dataValues.id, 
-            userId: req.user.id 
+            userId: req.user.id,
+            isAdmin: false 
         });
 
         res.status(201).json({success: true, group});
@@ -79,5 +84,71 @@ exports.joinGroup = async (req, res, next) => {
             res.status(409).json({ err: err });
         }
         
+    }
+}
+
+exports.getGroupMembers = async (req, res, next) => {
+    const userId = req.user.id;
+    const groupId = req.query.groupId;
+
+    const userGroups = await UserGroups.findAll({
+        where: {
+            groupId: groupId
+        },
+        order: [["userId", "ASC"]]
+    });
+
+    const userGroup = await UserGroups.findOne({
+        where: {
+            userId: userId,
+            groupId: groupId
+        }
+    });
+
+    const userIds =[];
+
+    userGroups.forEach((user) => {
+        userIds.push(user.dataValues.userId);
+    })
+
+    // users will be an array
+    const users = await Users.findAll({
+        where: { id: userIds }
+    });
+
+    res.json({users, userGroups, currentUserGroup: userGroup});
+}
+
+exports.makeAdmin = async (req, res, next) => {
+    const {userId, groupId} = req.body;
+
+    await UserGroups.update({isAdmin: true},{
+        where: {
+            userId: userId,
+            groupId: groupId
+        }
+    });
+
+    res.json({success: true});
+}
+
+exports.removeUserFromGroup = async (req, res, next) => {
+    try {
+
+        const {userId, groupId} = req.body;
+        console.log(userId, groupId)
+        const user = await UserGroups.findOne({
+            where: {
+                userId: userId,
+                groupId: groupId
+            }
+        });
+
+        await user.destroy();
+
+        res.json({success: true});
+
+    } catch(err) {
+        console.log(err);
     }
 }

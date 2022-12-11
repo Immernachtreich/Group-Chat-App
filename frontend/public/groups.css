@@ -90,7 +90,7 @@
 
 .group-text-div {
     display: inline-block;
-    width: 80%;
+    width: 70%;
 }
 
 .invite-button-div {
@@ -109,4 +109,62 @@
 
 .invite-button:hover {
     background-color: rgb(106, 166, 215);
+}
+
+.grp-setting-btn {
+    background-color: rgba(106, 166, 215, 0);
+    color: whitesmoke;
+    border: none;
+    font-size: 20px;
+}
+
+.grp-setting-btn:hover {
+    background-color: rgb(106, 166, 215);
+}
+
+.grp-settings-ul {
+    list-style: none;
+    padding: 0;
+
+    height: 20rem;
+    overflow: scroll;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.grp-settings-ul::-webkit-scrollbar {
+    display: none;
+}
+
+.grp-settings-ul li {
+    margin: 1rem 0rem;
+    border: 2px solid whitesmoke;
+    padding: 1rem;
+
+    
+}
+
+.remove-btn {
+    background-color: rgb(179, 42, 42);
+    color: whitesmoke;
+    border: none;
+    border-radius: 10px;
+    height: 2rem;
+    margin-right: 1rem;
+}
+
+.admin-btn {
+    background-color: rgb(51, 186, 51);
+    color: whitesmoke;
+    border: none;
+    border-radius: 10px;
+    height: 2rem;
+}
+
+.remove-btn:hover {
+    background-color: rgb(116, 26, 26);
+}
+
+.admin-btn:hover {
+    background-color: rgb(31, 121, 31);
 }
