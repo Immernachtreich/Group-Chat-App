@@ -34,6 +34,12 @@ app.use('/user', userRoutes);
 app.use('/message', messageRoutes);
 app.use('/group', groupRoutes);
 
+//Deployment Route
+app.use((req, res, next) => {
+
+    res.sendFile(path.join(__dirname, `frontend/${req.url}`));
+});
+
 // Error Routes
 app.use((req, res) => {
     res.status(404).send(`<h1> Page Not Found </h1>`);
