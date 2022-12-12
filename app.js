@@ -11,6 +11,9 @@ dotenv.config();
 // MySQL Database import (Local Import)
 const sequelize = require('./util/database.js'); 
 
+//Node Imports
+const path = require('path');
+
 // Model Imports
 const Users = require('./models/users.js');
 const Messages = require('./models/messages.js');
