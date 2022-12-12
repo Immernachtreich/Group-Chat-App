@@ -11,6 +11,9 @@ dotenv.config();
 // MySQL Database import (Local Import)
 const sequelize = require('./util/database.js'); 
 
+// Node Imports
+const path = require('path');
+
 // Model Imports
 const Users = require('./models/users.js');
 const Messages = require('./models/messages.js');
@@ -33,6 +36,12 @@ app.use(bodyParser.json({ extended: false }));
 app.use('/user', userRoutes);
 app.use('/message', messageRoutes);
 app.use('/group', groupRoutes);
+
+//Deployment Route
+app.use((req, res, next) => {
+
+    res.sendFile(path.join(__dirname, `frontend/${req.url}`));
+})
 
 // Error Routes
 app.use((req, res) => {
