@@ -1,5 +1,5 @@
 // URL
-const URL = 'http://localhost:5000';
+const URL = 'http://13.200.0.23:5000';
 
 // Token
 const token = localStorage.getItem('token');

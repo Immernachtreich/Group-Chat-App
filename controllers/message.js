@@ -51,5 +51,5 @@ exports.getMessages = async (req, res, next) => {
 }
 
 exports.sendMedia = async (req, res, next) => {
-    console.log(req.file);
+    console.log(req.file, req.body);
 }

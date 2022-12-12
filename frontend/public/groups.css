@@ -8,6 +8,7 @@
 
     border: 5px solid whitesmoke;
 
+    height: 36rem;
     overflow: auto;
 }
 .groups-div h2{
@@ -22,6 +23,17 @@
     width: 80%;
     margin: auto;
     margin-bottom: 5rem;
+
+    height: 25rem;
+
+    overflow: scroll;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.groups-div ul::-webkit-scrollbar {
+    display: none;
 }
 
 .groups-div ul li {
@@ -32,6 +44,7 @@
     margin: 1rem auto;
     padding: 1rem 1rem;
     word-wrap: break-word;
+
 }
 
 .groups-div ul li:nth-child(even) {

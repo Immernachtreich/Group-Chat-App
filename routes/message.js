@@ -1,6 +1,4 @@
 const express = require('express');
-const multer  = require('multer')
-const upload = multer();
 
 // Controllers
 const messageController = require('../controllers/message.js');
@@ -14,6 +12,6 @@ router.post('/sendMessage', userAuthentication.authenticateUser, messageControll
 
 router.get('/getMessages', messageController.getMessages);
 
-router.post('/sendMedia', upload.array() ,messageController.sendMedia);
+router.post('/sendMedia', messageController.sendMedia);
 
 module.exports = router;
