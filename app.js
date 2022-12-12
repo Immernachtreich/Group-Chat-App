@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const CronJob = require('cron').CronJob;
 
 // .env Imports and config
 const dotenv = require('dotenv');
