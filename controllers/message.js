@@ -49,3 +49,7 @@ exports.getMessages = async (req, res, next) => {
         console.log(err);
     }
 }
+
+exports.sendMedia = async (req, res, next) => {
+    console.log(req.file);
+}
