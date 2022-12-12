@@ -3,7 +3,7 @@ const Users = require('../models/users.js');
 
 // Package Imports
 const bcrypt = require('bcrypt');
-const Op = require('Sequelize').Op;
+const Op = require('sequelize').Op;
 const jwt = require('jsonwebtoken');
 
 exports.signupUser = async (req, res, next) => {
