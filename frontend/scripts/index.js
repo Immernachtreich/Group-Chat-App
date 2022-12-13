@@ -12,7 +12,6 @@ const messageInput = document.getElementById('message-input');
 
 
 // 
-
 var activeGroup;
 
 /*
@@ -46,6 +45,19 @@ existingGroupBtn.onclick = () => {
     `
 
     popupNotification('Join Group', form);
+}
+
+const sendMediaBtn = document.getElementById('send-files-btn');
+sendMediaBtn.onclick = (e) => {
+
+    e.preventDefault();
+    const form = 
+        `<form>
+            <input type="file" id="myFile" name="filename">
+            <button class="submit-files-btn" onclick="sendMedia(event)"> </button>
+        </form>`
+
+    popupNotification('Attach Files', form);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -85,7 +97,6 @@ async function sendMessage(e) {
         }
     }
 }
-
 
 async function getMessages(groupId, groupName) {
 
@@ -159,6 +170,15 @@ async function getMessagesInterval() {
         console.log(err);
     }
 }
+
+async function sendMedia() {
+    
+    const myFiles = document.getElementById('myFile').files;
+
+    const formData = new FormData();
+
+    console.log(myFiles);
+} 
 
 /*
 * Group Event Functions 

@@ -59,7 +59,7 @@
 }
 
 .message-input {
-    margin-left: 20%;
+    margin-left: 0%;
     width: 50%;
     height: 1.5rem;
 }
@@ -78,3 +78,18 @@
     background-color: rgb(12, 159, 196);
 }
 
+.send-files-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(91, 49, 165);
+    color: whitesmoke;
+
+    border: 2px solid whitesmoke;
+    border-radius: 7px; 
+    
+    margin-left: 15%;
+}
+
+.send-files-btn:hover {
+    background-color: rgb(12, 159, 196);
+}

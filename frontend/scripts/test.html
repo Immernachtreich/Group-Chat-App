@@ -5,8 +5,8 @@
 <p>Click on the "Choose File" button to upload a file:</p>
 
 <form action="http://localhost:5000/message/sendMedia" method="post">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
+  <input type="file" id="myFile" name="filename" accept="image/*" multiple>
+  <button>Submit</button>
 </form>
 
 </body>
